@@ -1,4 +1,5 @@
 <?php
+
 namespace Lsv\FussballElo;
 
 use Lsv\FussballElo\Model\Rating;
@@ -6,13 +7,13 @@ use Lsv\FussballElo\Model\Result;
 
 class Calculator
 {
-
     /**
-     * @param int $aRating Player A current rating
-     * @param int $bRating Player B current rating
-     * @param int $aScore Player A goal score
-     * @param int $bScore Player B goal score
+     * @param int $aRating   Player A current rating
+     * @param int $bRating   Player B current rating
+     * @param int $aScore    Player A goal score
+     * @param int $bScore    Player B goal score
      * @param int $eloFactor The status of the match is incorporated by the use of a weight constant
+     *
      * @return Result
      */
     public function getRatings($aRating, $bRating, $aScore, $bScore, $eloFactor = 20)
@@ -52,10 +53,11 @@ class Calculator
     }
 
     /**
-     * @param int $factor
+     * @param int   $factor
      * @param float $goalindex
      * @param float $winpoints
      * @param float $expected
+     *
      * @return float
      */
     private function calculatePointChange($factor, $goalindex, $winpoints, $expected)
@@ -66,6 +68,7 @@ class Calculator
     /**
      * @param Rating $ratingA
      * @param Rating $ratingB
+     *
      * @return float
      */
     private function getGoalIndex(Rating $ratingA, Rating $ratingB)
@@ -86,7 +89,7 @@ class Calculator
         }
 
         if (($scoreB - 2) <= $scoreA) {
-            return 3/2;
+            return 3 / 2;
         }
 
         return (11 + ($scoreB - $scoreA)) / 8;
@@ -95,6 +98,7 @@ class Calculator
     /**
      * @param int $ratingA
      * @param int $ratingB
+     *
      * @return float
      */
     private function getExpectedScores($ratingA, $ratingB)

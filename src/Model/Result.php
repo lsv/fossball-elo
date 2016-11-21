@@ -1,9 +1,9 @@
 <?php
+
 namespace Lsv\FussballElo\Model;
 
 class Result
 {
-
     /**
      * Player A rating.
      *
