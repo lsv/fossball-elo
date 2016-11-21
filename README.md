@@ -22,6 +22,44 @@ or add it to your `composer.json` file
 
 ### Usage
 
+```php
+
+$playerA_oldRating = 200;
+$playerB_oldRating = 280;
+
+$playerA_score = 3;
+$playerB_score = 2;
+
+$factor = 20; // Tournament factor
+// Normally these are used
+// 60 - World Cup
+// 50 - Continental Championship and Intercontinental Tournaments
+// 40 - World Cup and Continental qualifiers and major tournaments
+// 30 - All other tournaments
+// 20 - Friendly Matches
+
+use Lsv\FussballElo\Calculator;
+
+$calculator = new Calculator();
+$ratings = $calculator->getRatings(
+    $playerA_oldRating,
+    $playerB_oldRating,
+    $playerA_score,
+    $playerB_score,
+    $factor
+);
+// $ratings is now a instance of Lsv\FussballElo\Model\Result
+
+$playerA = $ratings->getPlayerA();
+$playerB = $ratings->getPlayerB();
+
+$playerA->getPointChange(); // Point change in this match for player A
+$playerA->getRating(); // New rating for player A
+
+$playerB->getPointChange(); // Point change in this match for player B
+$playerB->getRating(); // New rating for player B
+```
+
 ### License
 
 The MIT License (MIT)
