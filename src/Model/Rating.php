@@ -1,53 +1,53 @@
 <?php
+
 namespace Lsv\FussballElo\Model;
 
 class Rating
 {
-
     /**
-     * The player point change
+     * The player point change.
      *
      * @var float
      */
     public $pointChange;
 
     /**
-     * The player old rating
+     * The player old rating.
      *
      * @var int
      */
     public $oldRating;
 
     /**
-     * Tournament index factor (eloFactor) for this calculation
+     * Tournament index factor (eloFactor) for this calculation.
      *
      * @var int
      */
     public $tournamentIndexFactor;
 
     /**
-     * The goal difference in calculated points
+     * The goal difference in calculated points.
      *
      * @var float
      */
     public $goalDifference;
 
     /**
-     * Expected result, can be used as a percentage of winning
+     * Expected result, can be used as a percentage of winning.
      *
      * @var float
      */
     public $expectedResult;
 
     /**
-     * The wintype point
+     * The wintype point.
      *
      * @var int
      */
     public $winType;
 
     /**
-     * Number of goals scored by this user
+     * Number of goals scored by this user.
      *
      * @var int
      */
@@ -66,7 +66,7 @@ class Rating
     }
 
     /**
-     * The player new rating
+     * The player new rating.
      *
      * @return int
      */
@@ -76,7 +76,7 @@ class Rating
     }
 
     /**
-     * The player point change
+     * The player point change.
      *
      * @return float
      */
@@ -86,7 +86,7 @@ class Rating
     }
 
     /**
-     * The player old rating
+     * The player old rating.
      *
      * @return int
      */
@@ -96,7 +96,7 @@ class Rating
     }
 
     /**
-     * Tournament index factor (eloFactor) for this calculation
+     * Tournament index factor (eloFactor) for this calculation.
      *
      * @return int
      */
@@ -106,7 +106,7 @@ class Rating
     }
 
     /**
-     * The goal difference in calculated points
+     * The goal difference in calculated points.
      *
      * @return float
      */
@@ -116,7 +116,7 @@ class Rating
     }
 
     /**
-     * Expected result, can be used as a percentage of winning
+     * Expected result, can be used as a percentage of winning.
      *
      * @return float
      */
@@ -126,7 +126,7 @@ class Rating
     }
 
     /**
-     * The wintype point
+     * The wintype point.
      *
      * @return int
      */
@@ -136,7 +136,7 @@ class Rating
     }
 
     /**
-     * Number of goals scored by this user
+     * Number of goals scored by this user.
      *
      * @return int
      */
