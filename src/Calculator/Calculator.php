@@ -1,4 +1,5 @@
 <?php
+
 namespace Lsv\FussballElo\Calculator;
 
 use Lsv\FussballElo\Model\Rating;
@@ -13,11 +14,12 @@ class Calculator
 
     /**
      * @param string $winner
-     * @param int $aRating Player A current rating
-     * @param int $bRating Player B current rating
-     * @param int $aScore Player A goal score
-     * @param int $bScore Player B goal score
-     * @param int $eloFactor The status of the match is incorporated by the use of a weight constant
+     * @param int    $aRating   Player A current rating
+     * @param int    $bRating   Player B current rating
+     * @param int    $aScore    Player A goal score
+     * @param int    $bScore    Player B goal score
+     * @param int    $eloFactor The status of the match is incorporated by the use of a weight constant
+     *
      * @return array|\Lsv\FussballElo\Model\Rating[]
      */
     public function getRatings($winner, $aRating, $bRating, $aScore, $bScore, $eloFactor = 20)
@@ -25,7 +27,7 @@ class Calculator
         if (!in_array($winner, [
             self::DRAW,
             self::WINNER_A,
-            self::WINNER_B
+            self::WINNER_B,
         ])) {
             throw new \InvalidArgumentException('$winner variable should be either "DRAW" "A" or "B"');
         }
@@ -62,10 +64,11 @@ class Calculator
     }
 
     /**
-     * @param int $factor
+     * @param int   $factor
      * @param float $goalindex
      * @param float $winpoints
      * @param float $expected
+     *
      * @return float
      */
     private function calculatePointChange($factor, $goalindex, $winpoints, $expected)
@@ -76,6 +79,7 @@ class Calculator
     /**
      * @param Rating $ratingA
      * @param Rating $ratingB
+     *
      * @return float
      */
     private function getGoalIndex(Rating $ratingA, Rating $ratingB)
@@ -96,7 +100,7 @@ class Calculator
         }
 
         if (($scoreB - 2) <= $scoreA) {
-            return 3/2;
+            return 3 / 2;
         }
 
         return (11 + ($scoreB - $scoreA)) / 8;
@@ -105,6 +109,7 @@ class Calculator
     /**
      * @param int $ratingA
      * @param int $ratingB
+     *
      * @return float
      */
     private function getExpectedScores($ratingA, $ratingB)
