@@ -5,42 +5,66 @@ namespace Lsv\FussballElo\Model;
 class Result
 {
     /**
-     * Player A rating.
+     * Hometeam.
      *
-     * @var Rating
+     * @var Team
      */
-    public $playerA;
+    public $homeTeam;
 
     /**
-     * Player B rating.
+     * Awayteam.
      *
-     * @var Rating
+     * @var Team
      */
-    public $playerB;
+    public $awayTeam;
 
     /**
-     * @param Rating $playerA
-     * @param Rating $playerB
+     * Match weight for this game.
+     *
+     * @var int
      */
-    public function __construct(Rating $playerA, Rating $playerB)
+    public $matchWeight;
+
+    /**
+     * Match weight adjusted with goal score.
+     *
+     * @var float
+     */
+    public $matchWeightGoalscoreAdjusted;
+
+    /**
+     * @return Team
+     */
+    public function getHomeTeam()
     {
-        $this->playerA = $playerA;
-        $this->playerB = $playerB;
+        return $this->homeTeam;
     }
 
     /**
-     * @return Rating
+     * @return Team
      */
-    public function getPlayerA()
+    public function getAwayTeam()
     {
-        return $this->playerA;
+        return $this->awayTeam;
     }
 
     /**
-     * @return Rating
+     * Tournament index factor (eloFactor) for this calculation.
+     *
+     * @return int
      */
-    public function getPlayerB()
+    public function getMatchWeight()
     {
-        return $this->playerB;
+        return $this->matchWeight;
+    }
+
+    /**
+     * The goal difference in calculated points.
+     *
+     * @return float
+     */
+    public function getMatchWeightGoalscoreAdjusted()
+    {
+        return $this->matchWeightGoalscoreAdjusted;
     }
 }
