@@ -4,9 +4,8 @@ namespace Lsv\FussballElo\Model;
 
 class Team extends TeamWinExpectancies
 {
-
     /**
-     * The player new rating
+     * The player new rating.
      *
      * @var int
      */

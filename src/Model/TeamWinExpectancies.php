@@ -1,9 +1,9 @@
 <?php
+
 namespace Lsv\FussballElo\Model;
 
 class TeamWinExpectancies
 {
-
     /**
      * Winning Expectancies.
      *
@@ -12,7 +12,7 @@ class TeamWinExpectancies
     public $winExpectancies;
 
     /**
-     * Expected result in points
+     * Expected result in points.
      *
      * @return float
      */
@@ -22,7 +22,7 @@ class TeamWinExpectancies
     }
 
     /**
-     * Expected result in percentage
+     * Expected result in percentage.
      *
      * @param int $digits Number of decimals
      *

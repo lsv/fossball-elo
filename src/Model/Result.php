@@ -33,7 +33,7 @@ class Result
     public $matchWeightGoalscoreAdjusted;
 
     /**
-     * Get the result hometeam
+     * Get the result hometeam.
      *
      * @return Team
      */
@@ -43,7 +43,7 @@ class Result
     }
 
     /**
-     * Get the result awayteam
+     * Get the result awayteam.
      *
      * @return Team
      */

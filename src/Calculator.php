@@ -2,8 +2,8 @@
 
 namespace Lsv\FussballElo;
 
-use Lsv\FussballElo\Model\Team;
 use Lsv\FussballElo\Model\Result;
+use Lsv\FussballElo\Model\Team;
 
 class Calculator
 {
@@ -14,7 +14,7 @@ class Calculator
     const WEIGHT_WORLDCUP_FINAL = 60;
 
     /**
-     * Use hometeam advantage
+     * Use hometeam advantage.
      *
      * @var bool
      */
@@ -38,11 +38,11 @@ class Calculator
      * 30 for all other tournaments.
      * 20 for friendly matches.
      *
-     * @param int $homeRating   Hometeam current rating
-     * @param int $awayRating   Awayteam current rating
-     * @param int $homeScore    Hometeam goal score
-     * @param int $awayScore    Awayteam goal score
-     * @param int $matchWeight  Weight constant for the tournament played
+     * @param int $homeRating  Hometeam current rating
+     * @param int $awayRating  Awayteam current rating
+     * @param int $homeScore   Hometeam goal score
+     * @param int $awayScore   Awayteam goal score
+     * @param int $matchWeight Weight constant for the tournament played
      *
      * @return Result Match result
      */
@@ -62,6 +62,7 @@ class Calculator
 
         $result->homeTeam = $playerA;
         $result->awayTeam = $playerB;
+
         return $result;
     }
 
@@ -70,6 +71,7 @@ class Calculator
      *
      * @param int $homeRating
      * @param int $awayRating
+     *
      * @return Result
      */
     public function getWinExpectancies($homeRating, $awayRating)
@@ -81,6 +83,7 @@ class Calculator
         $result = new Result();
         $result->homeTeam = $playerA;
         $result->awayTeam = $playerB;
+
         return $result;
     }
 
@@ -93,8 +96,8 @@ class Calculator
      * Matchweight is increased by 3/4 + (N-3)/8 if the game is won by four or more goals.
      *
      * @param Result $result
-     * @param Team $hometeam
-     * @param Team $awayteam
+     * @param Team   $hometeam
+     * @param Team   $awayteam
      *
      * @return float
      */
@@ -126,6 +129,7 @@ class Calculator
         // Matchweight is increased by 3/4 + (N-3)/8 if the game is won by four or more goals,
         // N is the goal difference.
         $goaldiff = (($winScore - $loseScore) - 3) / 8;
+
         return $result->getMatchWeight() + (($result->getMatchWeight() * 0.75) + $goaldiff);
     }
 
@@ -141,7 +145,8 @@ class Calculator
      * We is the expected result (win expectancy).
      *
      * @param Result $result
-     * @param Team $player
+     * @param Team   $player
+     *
      * @return float
      */
     protected function calculateNewRating(Result $result, Team $player)
@@ -149,8 +154,7 @@ class Calculator
         return
             $player->getOldRating() +
             $result->getMatchWeightGoalscoreAdjusted() *
-            ($player->getResultPoint() - $player->getWinExpectancies())
-        ;
+            ($player->getResultPoint() - $player->getWinExpectancies());
     }
 
     /**
@@ -178,7 +182,7 @@ class Calculator
     }
 
     /**
-     * Calculate win expectancies
+     * Calculate win expectancies.
      *
      * Formular.
      * 1 / (10^(-dr/400) + 1)
@@ -192,11 +196,11 @@ class Calculator
     {
         $hometeamRating = $this->useHometeamAdvantage ?
             $hometeam->getOldRating() + 100 :
-            $hometeam->getOldRating()
-        ;
+            $hometeam->getOldRating();
 
         $calculation = function ($ratingDifference) {
             $formular = 1 / (pow(10, $ratingDifference / 400) + 1);
+
             return round($formular, 3);
         };
 
