@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor>
+    <parser>
+        <default-package-name>Lsv \ Fussball Elo Ranking</default-package-name>
+        <target>.build/docs</target>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+        <files>
+            <directory>src</directory>
+        </files>
+    </parser>
+    <transformer>
+        <target>/tmp/phpdoc-demo/responsive</target>
+    </transformer>
+    <transformations>
+        <template name="clean" />
+    </transformations>
+</phpdocumentor>

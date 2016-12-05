@@ -7,7 +7,6 @@ use Lsv\FussballElo\Model\Result;
 
 class Calculator
 {
-
     const WEIGHT_FRIENDLY = 20;
     const WEIGHT_TOURNAMENT = 30;
     const WEIGHT_WORLDCUP_QUALIFIER = 40;
@@ -201,7 +200,7 @@ class Calculator
             return round($formular, 3);
         };
 
-        $hometeam->winExpectancies = $calculation($hometeamRating - $awayteam->getOldRating());
-        $awayteam->winExpectancies = $calculation($awayteam->getOldRating() - $hometeamRating);
+        $hometeam->winExpectancies = $calculation($awayteam->getOldRating() - $hometeamRating);
+        $awayteam->winExpectancies = $calculation($hometeamRating - $awayteam->getOldRating());
     }
 }

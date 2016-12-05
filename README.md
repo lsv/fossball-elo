@@ -16,7 +16,7 @@ or add it to your `composer.json` file
 
 ```json
 "require": {
-    "lsv/fossball-elo": "^1.0"
+    "lsv/fossball-elo": "^2.0"
 }
 ```
 
@@ -24,11 +24,11 @@ or add it to your `composer.json` file
 
 ```php
 
-$playerA_oldRating = 200;
-$playerB_oldRating = 280;
+$hometeam_oldRating = 200;
+$awayteam_oldRating = 280;
 
-$playerA_score = 3;
-$playerB_score = 2;
+$hometeam_score = 3;
+$awayteam_score = 2;
 
 $factor = 20; // Tournament factor
 // Normally these are used
@@ -40,25 +40,61 @@ $factor = 20; // Tournament factor
 
 use Lsv\FussballElo\Calculator;
 
-$calculator = new Calculator();
+$calculator = new Calculator(false);
+// Change false to true if you want to give the hometeam a home advance
+
 $ratings = $calculator->getRatings(
-    $playerA_oldRating,
-    $playerB_oldRating,
-    $playerA_score,
-    $playerB_score,
+    $hometeam_oldRating,
+    $awayteam_oldRating,
+    $hometeam_score,
+    $awayteam_score,
     $factor
 );
 // $ratings is now a instance of Lsv\FussballElo\Model\Result
 
-$playerA = $ratings->getPlayerA();
-$playerB = $ratings->getPlayerB();
+$hometeam = $ratings->getHomeTeam();
+$awayteam = $ratings->getAwayTeam();
 
-$playerA->getPointChange(); // Point change in this match for player A
-$playerA->getRating(); // New rating for player A
+$hometeam->getPointChange(); // Point change in this match for home team
+$hometeam->getRating(); // New rating for home team
 
-$playerB->getPointChange(); // Point change in this match for player B
-$playerB->getRating(); // New rating for player B
+$awayteam->getPointChange(); // Point change in this match for away team
+$awayteam->getRating(); // New rating for away team
 ```
+
+Its also possible to only get win expectancies
+
+```php
+$calculator = new Calculator(false);
+// Change false to true if you want to give the hometeam a home advance
+$resullt = $calculator->getWinExpectancies($hometeam_oldRating, $awayteam_oldRating);
+$hometeam = $result->getHomeTeam();
+// $hometeam is now a instance of Lsv\FussballElo\Model\TeamWinExpectancies
+$awayteam = $result->getAwayTeam();
+
+$hometeam->getWinExpectancies();
+// 0.613
+$awayteam->getWinExpectancies();
+// 0.387
+
+$hometeam->getWinExpectanciesInPercent(1);
+// 1 = Number of digits
+// 61.3
+
+$awayteam->getWinExpectanciesInPercent(0);
+// 39
+```
+
+### Versions
+
+##### 2.*
+
+- Uses eloratings.net formular
+- Hometeam advantage can be used
+
+##### 1.*
+
+- Uses elo formular from wikipedia
 
 ### License
 

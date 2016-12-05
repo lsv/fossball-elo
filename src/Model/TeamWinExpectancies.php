@@ -32,5 +32,4 @@ class TeamWinExpectancies
     {
         return round($this->getWinExpectancies() * 100, $digits);
     }
-
 }

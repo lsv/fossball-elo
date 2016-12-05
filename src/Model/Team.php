@@ -50,7 +50,7 @@ class Team extends TeamWinExpectancies
      */
     public function getRating()
     {
-        return (int) $this->rating;
+        return round($this->rating, 0);
     }
 
     /**
